@@ -6,6 +6,7 @@
 <style>
 	div {
 		color: var(--secondary-color);
+		position: relative;
 	}
 
 	span {

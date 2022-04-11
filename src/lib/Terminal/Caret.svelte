@@ -1,8 +1,9 @@
 <script>
 	export let blink = true
+	export let char = '█'
 </script>
 
-<span class:blink>█</span>
+<span class:blink>{char}</span>
 
 <style>
 	@keyframes blink {
@@ -24,5 +25,6 @@
 	span {
 		user-select: none;
 		opacity: 75%;
+		letter-spacing: -2.8px;
 	}
 </style>
