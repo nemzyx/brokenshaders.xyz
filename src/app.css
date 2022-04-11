@@ -132,8 +132,9 @@ button:focus:not(:focus-visible) {
 
 span.webding {
 	font-family: 'broken OS webdings';
-	width: 28px;
+	/* width: 28px; */
 	text-align: center;
 	position: relative;
-	right: 2px;
+	left: -3px;
+	letter-spacing: 2px;
 }

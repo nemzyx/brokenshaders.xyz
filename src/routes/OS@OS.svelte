@@ -7,16 +7,15 @@
 
 <Terminal>
 	<SystemNav />
-	<!-- <Whoami /> -->
 	<Interactive />
+	<br />
+	<br />
+	<br />
+	<Whoami />
 </Terminal>
 
 <style global>
 	.col {
 		color: var(--accent-color);
-	}
-
-	span.webding {
-		right: 4.5px;
 	}
 </style>

@@ -82,7 +82,10 @@
         {
           "order": 41,
           "id": 32,
-          "name": "butterfly"
+          "name": "butterfly",
+          "prevSize": 32,
+          "code": 59680,
+          "tempChar": ""
         },
         {
           "order": 26,
@@ -90,7 +93,7 @@
           "name": "hooman",
           "prevSize": 32,
           "code": 59657,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 27,
@@ -98,7 +101,7 @@
           "name": "buddy",
           "prevSize": 32,
           "code": 59658,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 28,
@@ -106,7 +109,7 @@
           "name": "smile",
           "prevSize": 32,
           "code": 59659,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 29,
@@ -114,7 +117,7 @@
           "name": "rofl",
           "prevSize": 32,
           "code": 59660,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 40,
@@ -122,7 +125,7 @@
           "name": "meep",
           "prevSize": 32,
           "code": 59661,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 13,
@@ -130,7 +133,7 @@
           "name": "heart",
           "prevSize": 32,
           "code": 59662,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 14,
@@ -138,12 +141,15 @@
           "name": "heart-full",
           "prevSize": 32,
           "code": 59663,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 42,
           "id": 33,
-          "name": "diamond"
+          "name": "diamond",
+          "prevSize": 32,
+          "code": 59681,
+          "tempChar": ""
         },
         {
           "order": 15,
@@ -151,7 +157,7 @@
           "name": "floppy",
           "prevSize": 32,
           "code": 59664,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 16,
@@ -159,7 +165,7 @@
           "name": "doc",
           "prevSize": 32,
           "code": 59665,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 30,
@@ -167,7 +173,7 @@
           "name": "folders",
           "prevSize": 32,
           "code": 59666,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 31,
@@ -175,7 +181,7 @@
           "name": "lock",
           "prevSize": 32,
           "code": 59667,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 32,
@@ -183,7 +189,7 @@
           "name": "unlock",
           "prevSize": 32,
           "code": 59668,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 33,
@@ -191,7 +197,7 @@
           "name": "chip",
           "prevSize": 32,
           "code": 59669,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 34,
@@ -199,7 +205,7 @@
           "name": "fuckputin",
           "prevSize": 32,
           "code": 59670,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 35,
@@ -207,7 +213,7 @@
           "name": "reactjs",
           "prevSize": 32,
           "code": 59671,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 36,
@@ -215,7 +221,7 @@
           "name": "music",
           "prevSize": 32,
           "code": 59672,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 37,
@@ -223,7 +229,7 @@
           "name": "play",
           "prevSize": 32,
           "code": 59673,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 38,
@@ -231,7 +237,7 @@
           "name": "stop",
           "prevSize": 32,
           "code": 59674,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 39,
@@ -239,7 +245,7 @@
           "name": "pause",
           "prevSize": 32,
           "code": 59675,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 17,
@@ -247,7 +253,7 @@
           "name": "audio",
           "prevSize": 32,
           "code": 59676,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 18,
@@ -255,7 +261,7 @@
           "name": "mute",
           "prevSize": 32,
           "code": 59677,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 19,
@@ -263,7 +269,7 @@
           "name": "audiodown",
           "prevSize": 32,
           "code": 59678,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 20,
@@ -271,7 +277,7 @@
           "name": "audioup",
           "prevSize": 32,
           "code": 59679,
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 0,
