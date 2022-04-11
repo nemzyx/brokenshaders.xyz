@@ -29,7 +29,7 @@
 	<div class="centerTerminal">
 		<Terminal>
 			<TerminalLine>
-				<a href="/whoami">whoami</a> ?
+				<a href="/OS">whoami</a> ?
 			</TerminalLine>
 			<TerminalLine>
 				<Caret />
