@@ -44,16 +44,6 @@
 		/* padding: 0 2px; */
 	}
 
-	ul,
-	ul li,
-	ul ul li {
-		margin: 0;
-		padding: 0;
-		text-indent: 0;
-		list-style: none;
-		list-style-type: none;
-	}
-
 	li {
 		display: inline;
 	}

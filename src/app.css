@@ -124,6 +124,16 @@ button:focus:not(:focus-visible) {
 	outline: none;
 }
 
+ul,
+ul li,
+ul ul li {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	list-style: none;
+	list-style-type: none;
+}
+
 @media (min-width: 720px) {
 	h1 {
 		font-size: 4rem;

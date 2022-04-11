@@ -8,9 +8,9 @@
 <Terminal>
 	<SystemNav />
 	<Interactive />
+	<!-- <br />
 	<br />
-	<br />
-	<br />
+	<br /> -->
 	<Whoami />
 </Terminal>
 

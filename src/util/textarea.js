@@ -43,4 +43,34 @@ function setCursorPos(input, start, end) {
 	}
 }
 
-export { getCursorPos, setCursorPos }
+function getCurrentWord(input, start) {
+	let word = ''
+	let word_start
+	let word_end
+	const str = input.value
+	let ptr = start // current letter
+	if (str[ptr] != ' ') {
+		while (str[ptr - 1] != ' ' && ptr > 0) {
+			ptr--
+		}
+		word_start = ptr
+		while (str[ptr] != ' ' && ptr < str.length) {
+			ptr++
+		}
+		word_end = ptr
+		word = str.slice(word_start, word_end)
+	}
+	return {
+		word,
+		start: word_start,
+		end: word_end
+	}
+}
+
+function replaceAt(input, replaceStr, word, start) {
+	const str = input.value
+	const mut = str.slice(0, start) + replaceStr + str.slice(start + word.length, str.length)
+	input.value = mut
+}
+
+export { getCursorPos, setCursorPos, getCurrentWord, replaceAt }
