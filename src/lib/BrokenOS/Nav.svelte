@@ -1,14 +1,15 @@
 <script>
+	export let running = false
 	import Webding from '$lib/IconWebding.svelte'
 </script>
 
 <nav>
 	<ul>
-		<li class="icon">
+		<li class="icon" class:running>
 			<Webding>&#xe903;</Webding>
 		</li>
 		<li>
-			<a href="/">{`<< `}ESC</a>
+			<a href="/">&nbsp;{`« `}ESC&nbsp;</a>
 		</li>
 		<li>
 			<span style="display: inline-block; width: 55px" />
@@ -56,6 +57,29 @@
 		color: white;
 		background: var(--accent-color);
 		display: inline-block;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg) translate(6px, 0);
+		}
+		25% {
+			transform: rotate(90deg) translate(0.5px, -6.5px);
+		}
+		50% {
+			transform: rotate(180deg) translate(-6px, -1px);
+		}
+		75% {
+			transform: rotate(270deg) translate(-0.5px, 5.5px);
+		}
+		100% {
+			transform: rotate(360deg) translate(6px, 0);
+		}
+	}
+
+	:global(.icon.running span) {
+		/* background: red; */
+		animation: 700ms spin steps(2) infinite;
 	}
 
 	:global(.icon span) {

@@ -1,4 +1,7 @@
 <script>
+	//Get CLI for autocompletion purposes ONLY
+	export let CLI
+
 	import TerminalLine from '$lib/Terminal/Line.svelte'
 	import Caret from '$lib/Terminal/Caret.svelte'
 
@@ -7,7 +10,6 @@
 
 	import { getCursorPos, setCursorPos, getCurrentWord, replaceAt } from '$util/textarea.js'
 	import { onMount } from 'svelte'
-	import { get } from 'svelte/store'
 
 	const renderWebding = (char) => `<span class="webding">&nbsp;${char}</span>`
 
@@ -35,7 +37,7 @@
 		}
 	}
 
-	const PATTERN = /(?<=:)([A-z]{1,25})(?=:)/g
+	const PATTERN = /([A-z]{1,25})(?=:)/g
 
 	let _input
 	let cursor_pos
@@ -62,7 +64,7 @@
 			ent = true
 		}
 		setTimeout(() => {
-			// SEARCH LOCATIONS OF WEBDINGS
+			// SEARCH INDEXES OF WEBDINGS
 			const search = []
 			let match = null
 			while ((match = PATTERN.exec(_input.value))) {
@@ -115,6 +117,7 @@
 			//CURRENT WORD
 			const word_obj = getCurrentWord(_input, cursor_pos.start)
 			const { word } = word_obj
+			console.log(word)
 			if (word == '') {
 				completeSelected = -1
 			}
@@ -125,7 +128,6 @@
 					const selected = i == completeSelected
 					if (selected) {
 						if (ent) {
-							console.log(`REPLACE WITH ${x.value}`)
 							replaceAt(_input, x.value, word, word_obj.start)
 							const fakeEvent = {
 								...e,
@@ -145,7 +147,6 @@
 						selected
 					}
 				})
-				console.log(completeSelected)
 			} else {
 				complete = null
 			}
@@ -161,7 +162,7 @@
 
 <!-- <input bind:this={inp} on:input={setPos} /> -->
 <div class="hide">
-	<input bind:this={_input} on:keydown={update} />
+	<input bind:this={_input} on:keydown={update} on:input={update} />
 </div>
 <div class="interactive" on:click={focus}>
 	<TerminalLine>
@@ -192,10 +193,10 @@
 	}
 
 	.hide {
-		/* width: 0;
+		width: 0;
 		height: 0;
 		opacity: 0;
-		user-select: none; */
+		user-select: none;
 	}
 
 	.interactive {
@@ -226,5 +227,6 @@
 	:global(.autocomplete .webding) {
 		letter-spacing: 0px;
 		float: left;
+		padding-right: 5px;
 	}
 </style>

@@ -43,6 +43,9 @@ function setCursorPos(input, start, end) {
 	}
 }
 
+const wordSeps = [' ', '&nbsp;']
+const notInWordSeps = (x) => !wordSeps.some((y) => y === x)
+
 function getCurrentWord(input, start) {
 	let word = ''
 	let word_start
@@ -50,11 +53,11 @@ function getCurrentWord(input, start) {
 	const str = input.value
 	let ptr = start // current letter
 	if (str[ptr] != ' ') {
-		while (str[ptr - 1] != ' ' && ptr > 0) {
+		while (notInWordSeps(str[ptr - 1]) && ptr > 0) {
 			ptr--
 		}
 		word_start = ptr
-		while (str[ptr] != ' ' && ptr < str.length) {
+		while (notInWordSeps(str[ptr]) && ptr < str.length) {
 			ptr++
 		}
 		word_end = ptr

@@ -3,11 +3,12 @@
 	import SystemNav from '$lib/BrokenOS/Nav.svelte'
 	import Interactive from '$lib/Terminal/Interactive.svelte'
 	import Whoami from '$lib/BrokenOS/programs/Whoami.svelte'
+	import CLI from '$lib/BrokenOS/CLI.js'
 </script>
 
 <Terminal>
 	<SystemNav />
-	<Interactive />
+	<Interactive {CLI} />
 	<!-- <br />
 	<br />
 	<br /> -->
