@@ -25,6 +25,6 @@
 	span {
 		user-select: none;
 		opacity: 75%;
-		letter-spacing: -2.8px;
+		letter-spacing: -2px;
 	}
 </style>
