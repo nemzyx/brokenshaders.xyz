@@ -11,14 +11,23 @@
 	import webdingLUT from '$util/webdingLUT.js'
 	const webdings = Object.keys(webdingLUT)
 
+	const fakeEvent = {
+		get: (target, prop) => {
+			return null
+		}
+	}
+
 	import { getCursorPos, setCursorPos, getCurrentWord, replaceAt } from '$util/textarea.js'
 	import { onMount, createEventDispatcher } from 'svelte'
 	const dispatch = createEventDispatcher()
-	const PROMPT = () =>
+	const PROMPT = () => {
 		dispatch('prompt', {
 			value: _input?.value,
 			HTML: content
 		})
+		_input.value = ''
+		update(fakeEvent)
+	}
 
 	const renderWebding = (char) => `<span class="webding">&nbsp;${char}</span>`
 
@@ -139,15 +148,6 @@
 						if (ent) {
 							cancel_prompt = true
 							replaceAt(_input, x.value, word, word_obj.start)
-							const fakeEvent = {
-								...e,
-								get: (target, prop) => {
-									if (prop === 'key') {
-										return null
-									}
-									return target[prop]
-								}
-							}
 							update(fakeEvent)
 						}
 					}

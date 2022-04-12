@@ -1,4 +1,6 @@
 <script>
+	export let OS
+
 	import TerminalLine from '$lib/Terminal/Line.svelte'
 	import Caret from '$lib/Terminal/Caret.svelte'
 	import typewriter from '$transitions/typewriter.js'

@@ -4,25 +4,28 @@
 
 	import Terminal from '$lib/Terminal/index.svelte'
 	import SystemNav from '$lib/BrokenOS/Nav.svelte'
+	import TerminalLine from '$lib/Terminal/Line.svelte'
 	import Interactive from '$lib/Terminal/Interactive.svelte'
-	import CLI from '$lib/BrokenOS/CLI.js'
+	import CLI, { newField } from '$lib/BrokenOS/CLI.js'
 
-	let OS = { LINES: [true], PROGRAM: null, PROPS: {} }
+	let OS = { FIELDS: [newField()] }
 
 	const handlePrompt = async (e) => {
-		const { value } = e.detail
+		const { HTML, value } = e.detail
 		const response = CLI[value]
 		if (response) {
-			OS.PROGRAM = (await import(response)).default
-			return
+			const PROG = (await import(response)).default
+			OS.FIELDS[OS.FIELDS.length - 1].PROGRAM = PROG
+			OS.FIELDS[OS.FIELDS.length - 1].LINES.push(HTML)
+			OS.FIELDS.push(newField())
 		} else {
-			OS.PROGRAM = null
+			OS.FIELDS[OS.FIELDS.length - 1].LINES.push(HTML)
 		}
-		OS.LINES[OS.LINES.length - 1] = false
-		OS.LINES.push(true)
+		// UPDATE OBJECT
+		OS = OS
 	}
 
-	$: console.log(OS.LINES)
+	$: console.log(OS)
 </script>
 
 <Terminal>
@@ -43,12 +46,15 @@
 	{/await} -->
 
 	<SystemNav />
-	{#if OS.PROGRAM}
-		<svelte:component this={OS.PROGRAM} {...OS.PROPS} bind:OS />
-	{/if}
-	{#each OS.LINES as line}
-		<Interactive {CLI} on:prompt={handlePrompt} active={line} forcedFocus />
+	{#each OS.FIELDS as { LINES, PROGRAM }}
+		{#each LINES as markup}
+			<TerminalLine>{@html markup}</TerminalLine>
+		{/each}
+		{#if PROGRAM}
+			<svelte:component this={PROGRAM} bind:OS />
+		{/if}
 	{/each}
+	<Interactive {CLI} on:prompt={handlePrompt} active forcedFocus />
 	<div class="autoscroll-spacer" />
 </Terminal>
 

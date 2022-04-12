@@ -1,4 +1,5 @@
 <script>
 	export let OS
-	OS.LINES = [true]
+	import { newField } from '../CLI.js'
+	OS.FIELDS = [newField()]
 </script>
