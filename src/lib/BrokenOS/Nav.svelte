@@ -36,13 +36,14 @@
 
 <style>
 	nav {
-		/* color: var(--secondary-color);
-		/* text-opacity: 0.75; */
-		user-select: none;
+		/* user-select: none; */
 		background: var(--accent-color-alt);
 		color: var(--tertiary-color);
 		margin-bottom: 10px;
-		/* padding: 0 2px; */
+
+		position: sticky;
+		top: 10px;
+		z-index: 10;
 	}
 
 	li {

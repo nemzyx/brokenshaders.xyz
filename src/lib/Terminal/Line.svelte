@@ -1,5 +1,15 @@
+<script>
+	export let usr = true
+	export let indent = false
+</script>
+
 <div>
-	<span>~ %</span>
+	{#if usr}
+		<span>~ %</span>
+	{/if}
+	{#if indent}
+		&nbsp;&nbsp;&nbsp;
+	{/if}
 	<slot />
 </div>
 

@@ -2,6 +2,9 @@
 	//Get CLI for autocompletion purposes ONLY
 	export let CLI
 
+	export let active = false
+	export let forcedFocus = false
+
 	import TerminalLine from '$lib/Terminal/Line.svelte'
 	import Caret from '$lib/Terminal/Caret.svelte'
 
@@ -9,7 +12,13 @@
 	const webdings = Object.keys(webdingLUT)
 
 	import { getCursorPos, setCursorPos, getCurrentWord, replaceAt } from '$util/textarea.js'
-	import { onMount } from 'svelte'
+	import { onMount, createEventDispatcher } from 'svelte'
+	const dispatch = createEventDispatcher()
+	const PROMPT = () =>
+		dispatch('prompt', {
+			value: _input?.value,
+			HTML: content
+		})
 
 	const renderWebding = (char) => `<span class="webding">&nbsp;${char}</span>`
 
@@ -64,6 +73,7 @@
 			ent = true
 		}
 		setTimeout(() => {
+			let cancel_prompt = false
 			// SEARCH INDEXES OF WEBDINGS
 			const search = []
 			let match = null
@@ -117,7 +127,6 @@
 			//CURRENT WORD
 			const word_obj = getCurrentWord(_input, cursor_pos.start)
 			const { word } = word_obj
-			console.log(word)
 			if (word == '') {
 				completeSelected = -1
 			}
@@ -128,6 +137,7 @@
 					const selected = i == completeSelected
 					if (selected) {
 						if (ent) {
+							cancel_prompt = true
 							replaceAt(_input, x.value, word, word_obj.start)
 							const fakeEvent = {
 								...e,
@@ -149,6 +159,10 @@
 				})
 			} else {
 				complete = null
+			}
+
+			if (ent && !cancel_prompt) {
+				PROMPT()
 			}
 		}, t)
 	}
@@ -194,9 +208,11 @@
 
 	.hide {
 		width: 0;
-		height: 0;
+		/* height: 0; */
 		opacity: 0;
 		user-select: none;
+		position: absolute;
+		bottom: 0;
 	}
 
 	.interactive {
