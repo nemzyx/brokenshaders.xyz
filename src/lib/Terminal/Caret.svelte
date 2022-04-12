@@ -13,7 +13,7 @@
 		0% {
 			opacity: 0%;
 		}
-		30% {
+		35% {
 			opacity: 75%;
 		}
 		100% {
@@ -22,7 +22,7 @@
 	}
 
 	.blink {
-		animation: 800ms blink steps(1) infinite;
+		animation: 250ms blink steps(1) infinite;
 	}
 
 	span {

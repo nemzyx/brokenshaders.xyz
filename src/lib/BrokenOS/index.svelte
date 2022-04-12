@@ -1,4 +1,6 @@
 <script>
+	import ArrayQueue from '$util/queue.js'
+
 	import Terminal from '$lib/Terminal/index.svelte'
 	import SystemNav from '$lib/BrokenOS/Nav.svelte'
 	import TerminalLine from '$lib/Terminal/Line.svelte'
@@ -6,6 +8,11 @@
 	import CLI, { newField, setClass, notFound } from '$lib/BrokenOS/CLI.js'
 
 	let OS = { FIELDS: [newField()], HALT: false }
+
+	// const q = new ArrayQueue()
+	// q.enqueue({ complex: 'First in line' })
+	// q.enqueue({ complex: 'Second in line' })
+	// console.log(q)
 
 	const handlePrompt = async (e) => {
 		const { HTML, value } = e.detail
@@ -16,6 +23,9 @@
 			const PROG = (await import(`./programs/${response}.svelte`)).default
 			OS.FIELDS[OS.FIELDS.length - 1].PROGRAM = PROG
 			OS.FIELDS.push(newField())
+			if (OS.FIELDS.length > 5) {
+				OS.FIELDS.pop()
+			}
 		} else {
 			OS.FIELDS[OS.FIELDS.length - 1].LINES.push({ data: HTML })
 			if (value !== '') {

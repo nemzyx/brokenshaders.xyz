@@ -1,5 +1,5 @@
 export default {
-	diamond: '&#xe921;',
+	xtal: '&#xe921;',
 	smile: '&#xe90b;',
 	rofl: '&#xe90c;',
 	meep: '&#xe90d;',

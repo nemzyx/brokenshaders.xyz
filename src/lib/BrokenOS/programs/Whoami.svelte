@@ -95,7 +95,7 @@
 			<span in:typewriter={{ speed: s / 2, delay: 400 }}>This is </span><span
 				class="col"
 				in:typewriter={{ speed: s / 2, delay: 1000 }}>broken</span
-			>{#await delay(2400)}<span in:typewriter={{ speed: s / 1.6, delay: 1750 }}>:diamond:</span
+			>{#await delay(2400)}<span in:typewriter={{ speed: s / 1.6, delay: 1750 }}>:xtal:</span
 				>{/await}<span />{#await delay(2400) then}<span class="webding">{` `}&#xe921;</span
 				>{/await}<span class="col" in:typewriter={{ speed: s / 1, delay: 2600 }}
 				>shaders
