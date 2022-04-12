@@ -22,7 +22,7 @@
 	}
 
 	.blink {
-		animation: 250ms blink steps(1) infinite;
+		animation: 550ms blink steps(1) infinite;
 	}
 
 	span {
