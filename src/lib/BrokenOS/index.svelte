@@ -14,9 +14,9 @@
 		const { HTML, value } = e.detail
 		const response = CLI[value]
 		if (response) {
+			OS.FIELDS[OS.FIELDS.length - 1].LINES.push({ data: setClass('col', HTML) })
 			const PROG = (await import(`./programs/${response}.svelte`)).default
 			OS.FIELDS[OS.FIELDS.length - 1].PROGRAM = PROG
-			OS.FIELDS[OS.FIELDS.length - 1].LINES.push({ data: setClass('col', HTML) })
 			OS.FIELDS.push(newField())
 		} else {
 			OS.FIELDS[OS.FIELDS.length - 1].LINES.push({ data: HTML })
