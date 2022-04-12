@@ -70,9 +70,9 @@ function getCurrentWord(input, start) {
 	}
 }
 
-function replaceAt(input, replaceStr, word, start) {
+function replaceAt(input, replaceStr, ogStr, start) {
 	const str = input.value
-	const mut = str.slice(0, start) + replaceStr + str.slice(start + word.length, str.length)
+	const mut = str.slice(0, start) + replaceStr + str.slice(start + ogStr.length, str.length)
 	input.value = mut
 }
 

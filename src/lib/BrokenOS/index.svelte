@@ -1,7 +1,4 @@
 <script>
-	import BootArt from '$lib/BrokenOS/boot/index.svelte'
-	import delay from '$util/delay.js'
-
 	import Terminal from '$lib/Terminal/index.svelte'
 	import SystemNav from '$lib/BrokenOS/Nav.svelte'
 	import TerminalLine from '$lib/Terminal/Line.svelte'
