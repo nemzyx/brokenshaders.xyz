@@ -209,6 +209,7 @@
 
 			if (ent && !cancel_prompt) {
 				PROMPT()
+				resetSuggestion()
 			}
 			prevWord = word
 		}, t)
