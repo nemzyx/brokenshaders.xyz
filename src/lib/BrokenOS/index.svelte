@@ -15,6 +15,7 @@
 		const response = CLI[value]
 		if (response) {
 			OS.FIELDS[OS.FIELDS.length - 1].LINES.push({ data: setClass('col', HTML) })
+			OS = OS
 			const PROG = (await import(`./programs/${response}.svelte`)).default
 			OS.FIELDS[OS.FIELDS.length - 1].PROGRAM = PROG
 			OS.FIELDS.push(newField())
