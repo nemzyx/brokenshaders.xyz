@@ -41,6 +41,12 @@
 
 	const renderWebding = (char) => `<span class="webding">&nbsp;${char}</span>`
 
+	const cli_query = Object.keys(CLI)
+		.filter((x) => x[0] != ':')
+		.map((x) => ({
+			display: `${x}`,
+			value: `${x}`
+		}))
 	const webdings_query = Object.keys(webdingLUT).map((x) => ({
 		display: `:${x}: ${renderWebding(webdingLUT[x])}`,
 		value: `:${x}:`
@@ -64,6 +70,7 @@
 			}
 		}
 	}
+	let suggest = false
 
 	const PATTERN = /([A-z]{1,25})(?=:)/g
 
@@ -72,6 +79,7 @@
 	let cursor_padding = ''
 	let cursor_char = '█'
 	let content = ''
+	let prevWord = ''
 	const update = (e) => {
 		BLNK = false
 		clearTimeout(blnkTimer)
@@ -81,8 +89,10 @@
 		if (e.metaKey || e.ctrlKey) {
 			t = 10
 		}
-		let tab = false
+		let tab = null
 		let ent = false
+		let esc = false
+		let bck = false
 		if (e.key === 'Tab') {
 			e.preventDefault()
 			if (e.shiftKey) {
@@ -95,6 +105,8 @@
 			e.preventDefault()
 			ent = true
 		}
+		if (e.key === 'Backspace') bck = true
+		if (e.key === 'Escape') esc = true
 		setTimeout(() => {
 			let cancel_prompt = false
 			// SEARCH INDEXES OF WEBDINGS
@@ -150,11 +162,31 @@
 			//CURRENT WORD
 			const word_obj = getCurrentWord(_input, cursor_pos.start)
 			const { word } = word_obj
-			if (word == '') {
+
+			if (tab) {
+				suggest = true
+			}
+
+			const resetSuggestion = () => {
+				suggest = false
 				completeSelected = -1
 			}
-			if (word[0] == ':') {
-				const FIL = webdings_query.filter(({ value }) => value != word && value.includes(word))
+
+			if (word[0] == ':' || suggest) {
+				let FIL = null
+				if (word[0] == ':') {
+					if (word == '') resetSuggestion()
+					//Webding filtering
+					FIL = webdings_query.filter(({ value }) => value != word && value.includes(word))
+				} else {
+					if (word != prevWord) resetSuggestion()
+					//CMD filtering
+					FIL = cli_query.filter(({ value }) => value != word && value.includes(word))
+				}
+				if (esc || bck) {
+					resetSuggestion()
+					update(fakeEvent)
+				}
 				setCompleteSelected(tab, FIL.length)
 				complete = FIL.map((x, i) => {
 					const selected = i == completeSelected
@@ -178,6 +210,7 @@
 			if (ent && !cancel_prompt) {
 				PROMPT()
 			}
+			prevWord = word
 		}, t)
 	}
 
