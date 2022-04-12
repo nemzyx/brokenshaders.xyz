@@ -20,10 +20,12 @@
 			OS.FIELDS.push(newField())
 		} else {
 			OS.FIELDS[OS.FIELDS.length - 1].LINES.push({ data: HTML })
-			OS.FIELDS[OS.FIELDS.length - 1].LINES.push({
-				data: notFound(HTML),
-				props: { usr: false, indent: false }
-			})
+			if (value !== '') {
+				OS.FIELDS[OS.FIELDS.length - 1].LINES.push({
+					data: notFound(HTML),
+					props: { usr: false, indent: false }
+				})
+			}
 		}
 		// UPDATE OBJECT
 		OS = OS
