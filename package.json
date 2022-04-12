@@ -21,7 +21,8 @@
 		"svelte": "^3.46.0",
 		"svelte-preprocess": "^4.10.4",
 		"ttf2woff": "^3.0.0",
-		"ttf2woff2": "^4.0.4"
+		"ttf2woff2": "^4.0.4",
+		"vite-plugin-dynamic-import": "^0.8.0"
 	},
 	"type": "module",
 	"dependencies": {

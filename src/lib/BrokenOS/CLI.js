@@ -1,8 +1,8 @@
 export default {
-	whoami: '../lib/BrokenOS/programs/Whoami.svelte',
-	clear: '../lib/BrokenOS/programs/Clear.svelte',
-	ls: '../lib/BrokenOS/programs/Ls.svelte',
-	':cat:': '../lib/BrokenOS/programs/Meow.svelte'
+	whoami: 'Whoami',
+	clear: 'Clear',
+	ls: 'Ls',
+	':cat:': 'Meow'
 }
 
 const newField = () => ({ LINES: [], PROGRAM: null })
