@@ -31,7 +31,7 @@
 		OS = OS
 	}
 
-	$: console.log(OS)
+	// $: console.log(OS)
 </script>
 
 <Terminal>

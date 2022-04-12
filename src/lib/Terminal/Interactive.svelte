@@ -7,6 +7,13 @@
 
 	import TerminalLine from '$lib/Terminal/Line.svelte'
 	import Caret from '$lib/Terminal/Caret.svelte'
+	let BLNK = true
+	let blnkTimer = null
+	const startBlnkTimer = () => {
+		blnkTimer = setTimeout(() => {
+			BLNK = true
+		}, 300)
+	}
 
 	import webdingLUT from '$util/webdingLUT.js'
 	const webdings = Object.keys(webdingLUT)
@@ -66,6 +73,10 @@
 	let cursor_char = '█'
 	let content = ''
 	const update = (e) => {
+		BLNK = false
+		clearTimeout(blnkTimer)
+		startBlnkTimer()
+
 		let t = 0
 		if (e.metaKey || e.ctrlKey) {
 			t = 10
@@ -181,30 +192,31 @@
 	onMount(focus)
 </script>
 
-<!-- <input bind:this={inp} on:input={setPos} /> -->
-<div class="hide">
-	<input bind:this={_input} on:keydown={update} on:input={update} on:blur={blurHandler} />
-</div>
-<div class="interactive" on:click={focus}>
-	<TerminalLine>
-		{@html content}<span class="caret-overlay"
-			>&nbsp;&nbsp;&nbsp;&nbsp;{@html cursor_padding}<Caret
-				blink={false}
-				char={cursor_char}
-			/></span
-		>
-		{#if complete}
-			<div class="completeContainer">
-				&nbsp;&nbsp;&nbsp;{@html cursor_padding}
-				<ul class="autocomplete">
-					{#each complete as { selected, display, value }}
-						<li class:selected>{@html display}</li>
-					{/each}
-				</ul>
-			</div>
-		{/if}
-	</TerminalLine>
-</div>
+{#if active}
+	<div class="hide">
+		<input bind:this={_input} on:keydown={update} on:input={update} on:blur={blurHandler} />
+	</div>
+	<div class="interactive" on:click={focus}>
+		<TerminalLine>
+			{@html content}<span class="caret-overlay"
+				>&nbsp;&nbsp;&nbsp;&nbsp;{@html cursor_padding}<Caret
+					blink={BLNK}
+					char={cursor_char}
+				/></span
+			>
+			{#if complete}
+				<div class="completeContainer">
+					&nbsp;&nbsp;&nbsp;{@html cursor_padding}
+					<ul class="autocomplete">
+						{#each complete as { selected, display, value }}
+							<li class:selected>{@html display}</li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
+		</TerminalLine>
+	</div>
+{/if}
 
 <!-- <TerminalLine>Interactive mode! (beta)</TerminalLine> -->
 <style lang="scss">
