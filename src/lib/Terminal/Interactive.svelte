@@ -27,6 +27,9 @@
 		})
 		_input.value = ''
 		update(fakeEvent)
+		// blur and focus to autoscroll
+		_input.blur()
+		focus()
 	}
 
 	const renderWebding = (char) => `<span class="webding">&nbsp;${char}</span>`
@@ -171,12 +174,16 @@
 		_input.focus()
 	}
 
+	const blurHandler = () => {
+		if (forcedFocus) _input.focus()
+	}
+
 	onMount(focus)
 </script>
 
 <!-- <input bind:this={inp} on:input={setPos} /> -->
 <div class="hide">
-	<input bind:this={_input} on:keydown={update} on:input={update} />
+	<input bind:this={_input} on:keydown={update} on:input={update} on:blur={blurHandler} />
 </div>
 <div class="interactive" on:click={focus}>
 	<TerminalLine>
@@ -207,8 +214,8 @@
 	}
 
 	.hide {
-		width: 0;
 		/* height: 0; */
+		width: 0;
 		opacity: 0;
 		user-select: none;
 		position: absolute;

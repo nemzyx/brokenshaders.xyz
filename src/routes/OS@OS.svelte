@@ -67,7 +67,6 @@
 	}
 
 	.autoscroll-spacer {
-		height: 200px;
-		height: 20vh;
+		padding-top: 200px;
 	}
 </style>
