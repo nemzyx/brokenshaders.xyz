@@ -23,7 +23,7 @@
 			requestAnimationFrame(loop)
 		}
 		loop()
-		await delay(3500)
+		await delay(10500)
 		animate = true
 		await delay(300)
 		let CNT = 0
