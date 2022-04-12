@@ -2,7 +2,6 @@
 	//Get CLI for autocompletion purposes ONLY
 	export let CLI
 
-	export let active = false
 	export let forcedFocus = false
 
 	import TerminalLine from '$lib/Terminal/Line.svelte'
@@ -226,31 +225,26 @@
 	onMount(focus)
 </script>
 
-{#if active}
-	<div class="hide">
-		<input bind:this={_input} on:keydown={update} on:input={update} on:blur={blurHandler} />
-	</div>
-	<div class="interactive" on:click={focus}>
-		<TerminalLine>
-			{@html content}<span class="caret-overlay"
-				>&nbsp;&nbsp;&nbsp;&nbsp;{@html cursor_padding}<Caret
-					blink={BLNK}
-					char={cursor_char}
-				/></span
-			>
-			{#if complete}
-				<div class="completeContainer">
-					&nbsp;&nbsp;&nbsp;{@html cursor_padding}
-					<ul class="autocomplete">
-						{#each complete as { selected, display, value }}
-							<li class:selected>{@html display}</li>
-						{/each}
-					</ul>
-				</div>
-			{/if}
-		</TerminalLine>
-	</div>
-{/if}
+<div class="hide">
+	<input bind:this={_input} on:keydown={update} on:input={update} on:blur={blurHandler} />
+</div>
+<div class="interactive" on:click={focus}>
+	<TerminalLine>
+		{@html content}<span class="caret-overlay"
+			>&nbsp;&nbsp;&nbsp;&nbsp;{@html cursor_padding}<Caret blink={BLNK} char={cursor_char} /></span
+		>
+		{#if complete}
+			<div class="completeContainer">
+				&nbsp;&nbsp;&nbsp;{@html cursor_padding}
+				<ul class="autocomplete">
+					{#each complete as { selected, display, value }}
+						<li class:selected>{@html display}</li>
+					{/each}
+				</ul>
+			</div>
+		{/if}
+	</TerminalLine>
+</div>
 
 <!-- <TerminalLine>Interactive mode! (beta)</TerminalLine> -->
 <style lang="scss">

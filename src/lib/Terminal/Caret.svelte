@@ -1,9 +1,12 @@
 <script>
 	export let blink = true
 	export let char = '█'
+	export let active = true
 </script>
 
-<span class:blink>{char}</span>
+{#if active}
+	<span class:blink>{char}</span>
+{/if}
 
 <style>
 	@keyframes blink {

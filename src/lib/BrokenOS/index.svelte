@@ -5,7 +5,7 @@
 	import Interactive from '$lib/Terminal/Interactive.svelte'
 	import CLI, { newField, setClass, notFound } from '$lib/BrokenOS/CLI.js'
 
-	let OS = { FIELDS: [newField()] }
+	let OS = { FIELDS: [newField()], HALT: false }
 
 	const handlePrompt = async (e) => {
 		const { HTML, value } = e.detail
@@ -33,13 +33,7 @@
 </script>
 
 <Terminal>
-	<!-- {#await delay(4000) then}
-		<SystemNav />
-	{/await} -->
-	<SystemNav />
-	<!-- <div style="position: absolute;width:100%">
-		<BootArt />
-	</div> -->
+	<SystemNav running={OS.HALT} />
 	{#each OS.FIELDS as { LINES, PROGRAM }}
 		{#each LINES as { props, data: markup }}
 			<TerminalLine {...props}>{@html markup}</TerminalLine>
@@ -48,10 +42,9 @@
 			<svelte:component this={PROGRAM} bind:OS />
 		{/if}
 	{/each}
-	<!-- {#await delay(3000) then}
-		<Interactive {CLI} on:prompt={handlePrompt} active forcedFocus />
-	{/await} -->
-	<Interactive {CLI} on:prompt={handlePrompt} active forcedFocus />
+	{#if !OS.HALT}
+		<Interactive {CLI} on:prompt={handlePrompt} forcedFocus />
+	{/if}
 	<div class="autoscroll-spacer" />
 </Terminal>
 
