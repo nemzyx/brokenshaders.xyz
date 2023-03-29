@@ -14,9 +14,9 @@
 
 <footer>
 	<p>
-		visit <a href="https://soundcloud.com/broken_shaders/ep-demo" target="_blank"> SoundCloud ☁ </a>
+		visit <a href="https://soundcloud.com/broken_shaders" target="_blank"> SoundCloud ☁ </a>
 		to listen <br />
-		to the full mixtape 🌴👽🌴
+		to all my trax 🌴👽🌴
 	</p>
 </footer>
 
