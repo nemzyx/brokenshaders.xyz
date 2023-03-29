@@ -16,12 +16,12 @@
 </svelte:head>
 
 <section>
-	<h1>Save my dead HDD</h1>
+	<!-- <h1>Save my dead HDD</h1>
 
 	<Progressbar target={6000} raised={3000} />
 	<div style="padding-top: 20px">
 		<Button>SAVE</Button>
-	</div>
+	</div> -->
 
 	<h2>
 		Hi, this is my project <br /> <strong>broken💎shaders</strong>
@@ -58,7 +58,7 @@
 		margin: auto;
 	}
 
-	h1 {
+	/* h1 {
 		width: 100%;
-	}
+	} */
 </style>
